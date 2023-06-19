@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using TimedAssignment.Data;
 using TimedAssignment.Models.Comments;
+using TimedAssignment.Models.Posts;
 
 namespace TimedAssignment.Services.CommentServices
 {
@@ -13,18 +16,28 @@ namespace TimedAssignment.Services.CommentServices
     {
         private readonly ApplicationDbContext _context;
         private readonly IMapper _mapper;
+        private readonly string _userID;
 
-        public CommentService(ApplicationDbContext context, IMapper mapper)
+        public CommentService(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context, IMapper mapper)
         {
+            var userClaims = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
+            var value = userClaims!.FindFirst("uID")!.Value;
+
+            _userID = value;
+
+            if (_userID is null)
+                throw new Exception("Attempted to build NoteService with User ID claim.");
+
             _context = context;
             _mapper = mapper;
         }
 
         public async Task<bool> AddComment(CommentCreate model)
         {
-            var entity = _mapper.Map<Comment>(model);
+            var comment = _mapper.Map<Comment>(model);
+            comment.UserId = _userID;
 
-            await _context.Comments.AddAsync(entity);
+            await _context.Comments.AddAsync(comment);
 
             return await _context.SaveChangesAsync() > 0;
         }
@@ -41,7 +54,11 @@ namespace TimedAssignment.Services.CommentServices
 
         public async Task<CommentDetail> GetCommentByPostId(int id)
         {
-            throw new NotImplementedException();
+            var comment = await _context.Comments.Where(n => n.UserId == _userID).ToListAsync();
+
+            if (comment is null) return new CommentDetail { };
+
+            return _mapper.Map<CommentDetail>(comment);
         }
 
         public async Task<CommentDetail> GetCommentById(int id)

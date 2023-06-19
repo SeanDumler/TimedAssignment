@@ -12,5 +12,8 @@ namespace TimedAssignment.Models.Comments
         [Required]
         [MaxLength(300, ErrorMessage = "Text cannot exceed 300 characters.")]
         public string Text { get; set; } = null!;
+
+        [Required]
+        public int PostId { get; set; }
     }
 }
