@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using TimedAssignment.Data;
 using TimedAssignment.Services.CommentServices;
@@ -20,6 +21,11 @@ builder.Services.AddScoped<ILikeService,LikeService>();
 builder.Services.AddScoped<IPostService,PostService>();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer( builder.Configuration.GetConnectionString("DefaultConnection")));
+
+// builder.Services.AddIdentityCore<User>()
+//                 .AddRoles<IdentityRole>()
+//                 .AddEntityFrameworkStores<ApplicationDbContext>();
+                
 
 var app = builder.Build();
 
