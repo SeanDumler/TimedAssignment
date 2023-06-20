@@ -10,16 +10,17 @@ namespace TimedAssignment.Data
     public class Comment
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [MaxLength(300, ErrorMessage = "Text cannot exceed 300 characters.")]
         public string Text { get; set; } = null!;
 
-        // public List<Post> Posts { get; set; } = new List<Post>();
-
         public string UserId { get; set; } = null!;
 
-        [ForeignKey(nameof(UserId))]
-        public virtual Reply User { get; set; } = null!;
+        public int PostId { get; set; }
+
+        [ForeignKey(nameof(PostId))]
+        public virtual Post Post { get; set; }
+        
     }
 }

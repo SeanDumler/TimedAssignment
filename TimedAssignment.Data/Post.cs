@@ -22,16 +22,10 @@ namespace TimedAssignment.Data
 
         [ForeignKey(nameof(UserId))]
         public virtual User Owner { get; set; } = null!;
+     
+        public virtual List<Comment> Comments { get; set; }
+       
+        public virtual List<Like> Likes { get; set; }
 
-        public int CommentId { get; set; }
-        
-        [ForeignKey(nameof(CommentId))]
-        public virtual List<Comment> Comments { get; set; } = new List<Comment>();
-
-        public int LikeId { get; set; }
-
-        [ForeignKey(nameof(LikeId))]
-        public virtual List<Like> Likes { get; set; } = new List<Like>();
-        
     }
 }

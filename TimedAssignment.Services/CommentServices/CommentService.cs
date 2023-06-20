@@ -63,7 +63,7 @@ namespace TimedAssignment.Services.CommentServices
 
         public async Task<CommentDetail> GetCommentById(int id)
         {
-            var comment = await _context.Comments.Include(c => c.Text).SingleOrDefaultAsync(x => x.ID == id);
+            var comment = await _context.Comments.Include(c => c.Text).SingleOrDefaultAsync(x => x.Id == id);
 
             if (comment is null) return new CommentDetail { };
 
@@ -72,7 +72,7 @@ namespace TimedAssignment.Services.CommentServices
 
         public async Task<bool> UpdateComment(CommentEdit model)
         {
-            var comment = await _context.Comments.Include(c => c.Text).FirstOrDefaultAsync(x => x.ID == model.ID);
+            var comment = await _context.Comments.Include(c => c.Text).FirstOrDefaultAsync(x => x.Id == model.ID);
 
             if (comment is null) return false;
 
