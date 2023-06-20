@@ -21,12 +21,12 @@ namespace TimedAssignment.Services.CommentServices
         public CommentService(IHttpContextAccessor httpContextAccessor, ApplicationDbContext context, IMapper mapper)
         {
             var userClaims = httpContextAccessor.HttpContext.User.Identity as ClaimsIdentity;
-            var value = userClaims!.FindFirst("uID")!.Value;
+            var value = userClaims!.FindFirst("uId")!.Value;
 
             _userID = value;
 
             if (_userID is null)
-                throw new Exception("Attempted to build NoteService with User ID claim.");
+                throw new Exception("Attempted to build CommentService with User ID claim.");
 
             _context = context;
             _mapper = mapper;
@@ -63,7 +63,7 @@ namespace TimedAssignment.Services.CommentServices
 
         public async Task<CommentDetail> GetCommentById(int id)
         {
-            var comment = await _context.Comments.Include(c => c.Text).SingleOrDefaultAsync(x => x.Id == id);
+            var comment = await _context.Comments.Include(c => c.Post).SingleOrDefaultAsync(x => x.Id == id);
 
             if (comment is null) return new CommentDetail { };
 
