@@ -20,6 +20,7 @@ namespace TimedAssignment.API.Controllers
         }
 
         [HttpGet]
+        [Route("/commentById/Id")]
         public async Task<IActionResult> Get(int id)
         {
             return Ok(await _commentService.GetCommentById(id));
