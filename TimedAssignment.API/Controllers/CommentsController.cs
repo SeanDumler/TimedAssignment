@@ -25,6 +25,12 @@ namespace TimedAssignment.API.Controllers
             return Ok(await _commentService.GetCommentById(id));
         }
 
+        [HttpGet("{idPost:int}")]
+        public async Task<IActionResult> GetByPost(int idPost)
+        {
+            return Ok(await _commentService.GetCommentByPostId(idPost));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Post(CommentCreate model)
         {
