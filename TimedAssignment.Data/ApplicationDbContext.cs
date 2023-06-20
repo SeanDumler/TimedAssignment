@@ -23,6 +23,12 @@ namespace TimedAssignment.Data
                 }
             );
         }
+
+        public object Map<T>(TimedAssignment.Models.Replies.ReplyCreate model)
+        {
+            throw new NotImplementedException();
+        }
+
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Like> Likes { get; set; }
         public DbSet<Post> Posts { get; set; }
