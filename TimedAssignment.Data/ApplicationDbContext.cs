@@ -27,5 +27,12 @@ namespace TimedAssignment.Data
         public DbSet<Like> Likes { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> Replies { get; set; }
+
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     base.OnModelCreating(modelBuilder);
+
+            
+        // }
     }
 }
