@@ -10,6 +10,10 @@ namespace TimedAssignment.Models.Replies
     {
         [Required]
         public int Id { get; set; }
+        public Guid AuthorId { get; set; }
+
+        public int CommentId { get; set; }
+
         [Required]
         [MaxLength(300, ErrorMessage = "Text cannot exceed 300 characters.")]
         public string Text { get; set; } = null!;

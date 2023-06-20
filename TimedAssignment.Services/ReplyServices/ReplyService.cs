@@ -10,13 +10,11 @@ namespace TimedAssignment.Services.ReplyServices
 {
     public class ReplyService : IReplyService
     {
-        private readonly _mapper;
         private readonly ApplicationDbContext _userId;
         private readonly ApplicationDbContext _context;
         public ReplyService(ApplicationDbContext context)
         {
             _context = context;
-            _mapper = mapper;
             _userId = UserId
         }
 
