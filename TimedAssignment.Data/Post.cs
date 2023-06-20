@@ -21,7 +21,7 @@ namespace TimedAssignment.Data
         public string UserId { get; set; } = null!;
 
         [ForeignKey(nameof(UserId))]
-        public virtual User User { get; set; } = null!;
+        public virtual User Owner { get; set; } = null!;
 
         public int CommentId { get; set; }
         
