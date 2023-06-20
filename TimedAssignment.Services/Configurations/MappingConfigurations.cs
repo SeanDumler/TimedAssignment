@@ -8,6 +8,7 @@ using TimedAssignment.Models.Comments;
 using TimedAssignment.Models.Likes;
 using TimedAssignment.Models.Posts;
 using TimedAssignment.Models.Replies;
+using TimedAssignment.Models.Users;
 
 namespace TimedAssignment.Services.Configurations
 {
@@ -34,6 +35,8 @@ namespace TimedAssignment.Services.Configurations
             CreateMap<Reply, ReplyListItem>().ReverseMap();
             CreateMap<Reply, ReplyDetail>().ReverseMap();
             CreateMap<Reply, ReplyEdit>().ReverseMap();
+
+            CreateMap<User,UserEntityVM>().ReverseMap();
         }
     }
 }

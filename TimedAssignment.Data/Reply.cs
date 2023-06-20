@@ -18,7 +18,10 @@ namespace TimedAssignment.Data
         [ForeignKey(nameof(CommentId))]
         public virtual Comment Comment { get; set; } = null!;
 
-        public Guid AuthorId { get; set; }
+        public string OwnerId { get; set; } = null!;
+
+        [ForeignKey(nameof(OwnerId))]
+        public User User { get; set; } = null!;
         [Required]
         [MaxLength(300)]
         public string Text { get; set; } = null!;
