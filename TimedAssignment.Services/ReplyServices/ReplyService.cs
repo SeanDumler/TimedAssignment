@@ -10,40 +10,35 @@ namespace TimedAssignment.Services.ReplyServices
 {
     public class ReplyService : IReplyService
     {
-        private readonly ApplicationDbContext _userId;
+        private readonly string _userId;
         private readonly ApplicationDbContext _context;
         public ReplyService(ApplicationDbContext context)
         {
             _context = context;
-            _userId = UserId
+            _userId = userId
         }
 
-        public async Task<bool> IReplyService.AddReply(ReplyCreate model)
+        public async Task<bool> AddReply(ReplyCreate model)
         {
-            var reply = _mapper.Map<Reply>(model);
-            Reply.UserId = _userID;
-
-            await _context.Reply.AddAsync(reply);
-
-            return await _context.SaveChangesAsync() > 0;
+            
         }
 
-        public async Task<bool> IReplyService.DeleteReply(int id)
+        public async Task<bool> DeleteReply(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ReplyDetail> IReplyService.GetReplyByReplyId(int id)
+        public async Task<ReplyDetail> GetReplyByReplyId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<ReplyDetail> IReplyService.GetReplyById(int id)
+        public async Task<ReplyDetail> GetReplyById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public async Task<bool> IReplyService.UpdateReply(ReplyEdit model)
+        public async Task<bool> UpdateReply(ReplyEdit model)
         {
             throw new NotImplementedException();
         }
