@@ -11,12 +11,12 @@ namespace TimedAssignment.Data
     {
         [Key]
         public int Id { get; set; }
-        [MaxLength(512)]
-        [ForeignKey(nameof(UserId))]
-        public virtual Reply UserId { get; set; }
+        [MaxLength(300)]
+        [ForeignKey(nameof(CommentId))]
+        public virtual Reply CommentId { get; set; }
         public Guid AuthorId { get; set; }
         [Required]
-        [MaxLength(512)]
+        [MaxLength(300)]
         public string Text { get; set; }
     }
 }
