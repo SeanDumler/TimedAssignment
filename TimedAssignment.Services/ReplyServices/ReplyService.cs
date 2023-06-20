@@ -15,12 +15,11 @@ namespace TimedAssignment.Services.ReplyServices
         public ReplyService(ApplicationDbContext context)
         {
             _context = context;
-            _userId = userId
         }
 
         public async Task<bool> AddReply(ReplyCreate model)
         {
-            
+            throw new NotImplementedException();
         }
 
         public async Task<bool> DeleteReply(int id)

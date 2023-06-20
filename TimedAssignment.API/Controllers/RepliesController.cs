@@ -35,8 +35,8 @@ namespace TimedAssignment.API.Controllers
                 return StatusCode(500, "Internal Server Error.");
         }
 
-        [HttpGet]
-        public async 
+        // [HttpGet]
+        // public async 
 
     }
 }
