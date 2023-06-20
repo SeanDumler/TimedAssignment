@@ -8,6 +8,7 @@ namespace TimedAssignment.Models.Users
 {
     public class LoginVM
     {
+        
         [Required]
         [EmailAddress]
         public string Email { get; set; } = null!;
