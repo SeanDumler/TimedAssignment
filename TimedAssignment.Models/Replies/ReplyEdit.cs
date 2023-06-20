@@ -12,6 +12,6 @@ namespace TimedAssignment.Models.Replies
         public int Id { get; set; }
         [Required]
         [MaxLength(300, ErrorMessage = "Text cannot exceed 300 characters.")]
-        public string Text { get; set; }
+        public string Text { get; set; } = null!;
     }
 }

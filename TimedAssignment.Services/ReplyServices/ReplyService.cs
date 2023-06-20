@@ -10,12 +10,14 @@ namespace TimedAssignment.Services.ReplyServices
 {
     public class ReplyService : IReplyService
     {
-        private readonly ApplicationDbContext _mapper;
+        private readonly _mapper;
+        private readonly ApplicationDbContext _userId;
         private readonly ApplicationDbContext _context;
         public ReplyService(ApplicationDbContext context)
         {
             _context = context;
             _mapper = mapper;
+            _userId = UserId
         }
 
         public async Task<bool> IReplyService.AddReply(ReplyCreate model)
@@ -44,6 +46,11 @@ namespace TimedAssignment.Services.ReplyServices
         }
 
         public async Task<bool> IReplyService.UpdateReply(ReplyEdit model)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<ReplyDetail> GetReplyByCommentId(int id)
         {
             throw new NotImplementedException();
         }
